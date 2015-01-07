@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "engine.py", line 6, in <module>
+  File "zipextimporter.pyo", line 82, in load_module
+  File "decker.pyo", line 8, in <module>
+  File "filer.pyo", line 26, in run
+  File "filer.pyo", line 34, in file_importer
+  File "filer.pyo", line 40, in importer
+  File "<string>", line 89, in <module>
+AttributeError: 'Deck' object has no attribute 'add_deck'
+Traceback (most recent call last):
+  File "engine.py", line 86, in <module>
+  File "engine.py", line 61, in main
+  File "decks.pyo", line 56, in run
+  File "decks.pyo", line 84, in run_side
+  File "decks.pyo", line 106, in set_side
+  File "decks.pyo", line 118, in deck_check
+  File "decks.pyo", line 136, in random_check
+IndexError: list index out of range
