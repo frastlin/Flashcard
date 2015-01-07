@@ -1,0 +1,3 @@
+deck1:
+front_text="What is the capitle of california?",
+back_text="Sacramento";

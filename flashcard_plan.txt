@@ -1,0 +1,65 @@
+
+Flashcard is a program that will take your question and responces and randomise them.
+
+you create a document that has the front of the card and the back of the card. like:
+fronttext:"2+2 ="
+backtext:"4"
+
+There will be a Deck class which will have the below options plus a tuples list called card_list.
+There will be a tuple with front and back card in it.
+Front and back card will both be a child of deck and they will be the same class.
+
+Instead of having the front and back being the child of the deck, the deck will have a 
+
+The deck.run function will put the deck.cards tuple list into a copy and set it as the current deck. When the deck is played, it will chose a random card from the list and play it. when it is on the back of the card, it will either be removed from the list or nothing will happen to it, depending on the card's settings.
+The order of operations will be: load text, load picture, play sound/video.
+
+
+
+Make an ingame way of creating flash-cards.
+Create a deck wide settings with:
+voice for front of card
+voice for back of card
+font for front of card
+font for back of card
+(Font has size, color and type)
+background for front of card
+background for back of card
+Default options for front of card
+cards will repeat
+
+for front of the card have:
+text
+sound/video
+picture (with a description)
+other options (Just changes the deck defaults for this spacific card)
+
+Then if there are options, you create the options list with the same as above
+
+back of the card has the same as above for front of card, just without options.
+
+have 2 folders, decks_in_python (the place for all decks)
+and a scripts folder.
+
+make a check in decker to import and add my_decks if the list is [].
+
+in-app deck creation:
+The create deck option will be in decker.py and you will have a create deck option in the menu list.
+
+create display in a little box for typing text in typer
+
+add the options in the create deck and get title working
+
+take another look at display.persistent_list and menus.Menu.remain. figure out if a temp list or a persistant list would be better. also see if you can find a snapshot of the current screen that you can save.
+
+
+Here is the amazon guide for sending requests:
+http://docs.aws.amazon.com/general/latest/gr/sigv4-signed-request-examples.html
+Here is the Ivona template for formatting the requests:
+http://developer.ivona.com/en/speechcloud/api_ref_actions.html
+
+lupus88988@virgilio.it
+338-8088145
+francesco
+
+send links to lime
