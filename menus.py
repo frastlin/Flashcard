@@ -150,10 +150,6 @@ class Menu(object):
 		[i[1].refresh() for i in od]
 		od[highlighted][1].select()
 		od = [[i[0], i[1].current_font] for i in od]
-
-		if self.options_rect:
-			print(str([(od[i][1]['size'], self.options_rect[i].height) for i in range(len(od))]))
-
 		return text.complex_multilign(text_settings=od, xpos=self.top_left_corner[0], ypos=self.top_left_corner[1], persistent=self.remain, center=self.center, clear=True)
 
 	def set_options_display(self):
@@ -201,9 +197,7 @@ class Fonter:
 		"""Will switch current_font to highlighted_font"""
 		self.current_font.update(self.highlighted_font)
 
-temp_dict = {}
-
-def add_menu(actions, options=['Yes', 'No'], dict=temp_dict, name=None, result_list=[], default_position=0, keys=["up", "down", ["escape", "backspace"], "return"], mouse=False, shortkeys=None, title="Test Menu", loops=True, persistent=0, font={}, highlight=False, sounds={}, top_left_corner=(350, 100), center=True, remain=False):
+def add_menu(actions, options=['Yes', 'No'], dict={}, name=None, result_list=[], default_position=0, keys=["up", "down", ["escape", "backspace"], "return"], mouse=False, shortkeys=None, title="Test Menu", loops=True, persistent=0, font={}, highlight=False, sounds={}, top_left_corner=(350, 100), center=True, remain=False):
 	"""Call this function with a dict of actions and the name of a dict to append either the name or title to."""
 	if not name:name = title
 	if not dict.get(name):

@@ -1,5 +1,8 @@
 # coding: latin-1
 """
+add these to the idiams:
+http://matadornetwork.com/abroad/10-idioms-italians-understand/
+
 words I don't know:
 PIROFILA
 terrine

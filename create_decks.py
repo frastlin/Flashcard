@@ -1,5 +1,5 @@
 #This deals with the creation or editing of menus
-import typer, menus, decks, voice, colors, collections
+import typer, menus, decks, voice, colors, collections, os
 
 screen = []
 menu_list = {}
@@ -16,7 +16,7 @@ def run(actions, deck):
 		s = titler(actions, deck)
 	elif screen[0] == "Global Deck Options":
 		s = options_run(actions, deck)
-
+#add the option for adding cards to the deck
 
 	elif "exit" in screen[0]:
 		screen[0] = "main_menu"
@@ -108,7 +108,6 @@ def options_sub_run(actions, deck):
 		s = default_side(actions, deck.default_back, "Default Back")
 		if s:pass
 		else:return 0
-
 	screen.pop()
 
 def default_side(actions, side, name):
@@ -137,9 +136,20 @@ def deck_default_runner(actions, side, name):
 				screen.pop()
 	elif screen[2] == "Font":
 		menus.add_menu(actions=actions, dict=menu_list, result_list=screen, name="choose_font", title="Font Settings", options=['Size: %s' % side['font']['size'], 'Color', 'Font File'])
-
-	elif screen[2] == "Background":
-		pass
+	elif "Background" in screen[2]:
+		if not menu_list.get("color_list"):
+			z = {}
+			z.update(colors.colors_list1)
+			[z.update({i: {'default_font': {'font_color': z[i]}, 'highlighted_font': {'font_color': z[i]}}}) for i in z]
+			menu_list['color_list'] = collections.OrderedDict(sorted(z.items()))
+		s = menus.add_menu(options=menu_list['color_list'], persistent=2, actions=actions, dict=menu_list, name="background_menu", title="Pick a background color")
+		if s:
+			print(s)
+			if s != "exit":
+				side['font_background'] = s
+				side['background'] = s
+				menu_list[name].options[2] = "Background: %s" % s
+			screen.pop()
 	elif screen[2] == "exit":
 		screen.pop(2)
 		screen[1] = "global_deck_options"
@@ -156,15 +166,17 @@ def fonter(actions, side):
 		if not menu_list.get("color_list"):
 			z = {}
 			z.update(colors.colors_list1)
-			z.update(colors.colors_list2)
 			[z.update({i: {'default_font': {'font_color': z[i]}, 'highlighted_font': {'font_color': z[i]}}}) for i in z]
 			menu_list['color_list'] = collections.OrderedDict(sorted(z.items()))
 		s = menus.add_menu(options=menu_list['color_list'], persistent=2, actions=actions, dict=menu_list, name="color_menu", title="Pick a font color")
-		if s == "exit":screen.pop()
-		elif s:
-			menu_list["choose_font"].options[1] = 'Color: %s' % s
-			side['font']['font_color'] = s
+		if s:
+			if s != "exit":
+				menu_list["choose_font"].options[1] = 'Color: %s' % s
+				side['font']['font_color'] = s
 			screen.pop()
-
-
-#480
+	elif "Font" in screen[3]:
+		s = menus.add_menu(options=[f for f in os.listdir(".") if ".ttf" in f], title="Choose a Font file", persistent=2, actions=actions, dict=menu_list, name="font_file")
+		if s:
+			if s != "exit":
+				side['font']['font'] = s
+			screen.pop()
