@@ -1,5 +1,6 @@
 #This deals with the creation or editing of menus
-import typer, menus, decks, voice, colors, collections, os
+import os, collections
+import typer, menus, decks, cards, voice, colors, create_cards
 
 screen = []
 menu_list = {}
@@ -16,7 +17,11 @@ def run(actions, deck):
 		s = titler(actions, deck)
 	elif screen[0] == "Global Deck Options":
 		s = options_run(actions, deck)
-#add the option for adding cards to the deck
+
+	elif screen[0] == "Add New Card":
+		s = create_cards.run(actions, deck)
+		if s and s != "main_menu":
+			pass
 
 	elif "exit" in screen[0]:
 		screen[0] = "main_menu"
@@ -144,7 +149,6 @@ def deck_default_runner(actions, side, name):
 			menu_list['color_list'] = collections.OrderedDict(sorted(z.items()))
 		s = menus.add_menu(options=menu_list['color_list'], persistent=2, actions=actions, dict=menu_list, name="background_menu", title="Pick a background color")
 		if s:
-			print(s)
 			if s != "exit":
 				side['font_background'] = s
 				side['background'] = s
