@@ -1,1 +1,9 @@
-name:My scripted deck 1
+title:My scripted deck 1:It is cool
+
+I like cake
+I like pie
+
+
+This is: fun
+This is cheese
+questo è troppo bene

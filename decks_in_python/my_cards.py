@@ -85,10 +85,11 @@ c("What color is the blue sky on a sunny day?", "Orange!")
 c("Why did the chicken cross the road?", "uh... good question! I guess I'll never know.")
 c("When do you wake up in the morning?", "Too early")
 
-test_deck = deck("Testing stuff")
-c = test_deck.add_card
-c("Here is front text with a voice", "Here is the back text")
-c("Here is another card", "Here is this card", front_settings={"font": {"font_color": "red"}, "background": "blue"})
+instruction = deck("Attension!")
+instruction.default_back['random'] = False
+c = instruction.add_card
+c("Hit enter", "To change sides and cards!")
+c("What did the skeleton say when he got on the motorcycle?", "I was bone to be wild!", back_media="sounds/bone.ogg")
 
-deck_list = [deck1, deck2, test_deck]
+deck_list = [deck1, deck2, instruction]
 

@@ -62,4 +62,61 @@ lupus88988@virgilio.it
 338-8088145
 francesco
 
-send links to lime
+screen layout
+
+front:
+deck list...
+
+context menu:
+add deck
+edit deck
+
+create new deck:
+Title
+Add new Card
+Current Cards
+Save
+
+sounds I need:
+a motercycle sound
+
+scripting language
+title: Fred and joe
+
+text:
+This is the front,
+This is the back!
+This is the next card,
+This is the back of the next card
+
+This is the third card
+this is the back of the 3rd card.
+media:decks_in_python/sounds/skelitan.ogg
+
+text:
+This is the next deck
+
+It will open the file,
+take out all the line breaks
+iterate through each line and search for a :
+if there is a :, it will then split the line from the :. Then if the first part fits the keywords, it will process it. It will then put the text in the current text processing function.
+
+Each keyword will set a variable to a different function. there will be
+text
+title
+media
+
+title
+will create an empty deck object to fill. Then it will make the text that is passed to it the title of the deck.
+it will then clear the current card class
+It will then change the current text processor to text.
+
+text
+will fill the text of the first side in the card class, then it will check if the first side is full and if so, it will fill the section of the second side.
+if both sides are full, it will add the card to the deck object. if there is no text for the second card, it will do nothing.
+
+media
+will check if it was passed text. if so, it will fill the media part of the dict.
+if not, it will put media as the function and next time it is passed, if there is text, it will add the text to the media part in the card class.
+it will then change the processor back to text
+

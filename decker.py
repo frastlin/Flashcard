@@ -8,7 +8,7 @@ if not deck_list:
 	deck_list += my_cards.deck_list
 
 deck_titles = [n.title for n in deck_list]
-deck_titles += ['Edit Deck', 'Create New Deck']
+#deck_titles += ['Edit Deck', 'Create New Deck']
 
 deck_menu = menus.Menu(deck_titles, title="Deck Menu")
 editing = [False,]

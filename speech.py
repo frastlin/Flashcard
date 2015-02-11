@@ -1,9 +1,9 @@
 #Speaks text in the way I wish without hard-coding accessible_output like normal.
-#import accessible_output2.outputs.auto
-#spk = accessible_output2.outputs.auto.Auto().output
+import accessible_output2.outputs.auto
+spk = accessible_output2.outputs.auto.Auto().output
 
-from accessible_output import speech
-spk = speech.Speaker().output
+#from accessible_output import speech
+#spk = speech.Speaker().output
 
 current_text = "Hello to the world"
 position = [0, 0]
