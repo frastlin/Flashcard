@@ -6,7 +6,6 @@ from pygame import mixer
 mixer.pre_init(22050,-16, 2, 400)
 mixer.init()
 
-
 class Deck(object):
 	default_settings = {'voice': None, 'font': {'size': 40, 'color': 'white', 'font': 'freesansbold.ttf'}, 'background': 'black', 'cards_repeat': True}
 
@@ -185,7 +184,6 @@ class Deck(object):
 
 	def media_process(self, media):
 		"""Returns a media object"""
-		media = "decks_in_python/%s" % media
 		m = mixer.Sound(media)
 		return m
 

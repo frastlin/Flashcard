@@ -7,3 +7,14 @@ I like pie
 This is: fun
 This is cheese
 questo и troppo bene
+и qтиа text
+
+This is a sound
+did you like that?
+media: decks_in_python\sounds\bone.ogg
+
+
+Here is some text spoken by a voice
+voice:language=english, name=salli
+That was good wasn't it?
+voice:name=emma

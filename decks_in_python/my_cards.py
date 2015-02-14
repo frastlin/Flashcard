@@ -89,7 +89,7 @@ instruction = deck("Attension!")
 instruction.default_back['random'] = False
 c = instruction.add_card
 c("Hit enter", "To change sides and cards!")
-c("What did the skeleton say when he got on the motorcycle?", "I was bone to be wild!", back_media="sounds/bone.ogg")
+c("What did the skeleton say when he got on the motorcycle?", "I was bone to be wild!", back_media="decks_in_python/sounds/bone.ogg")
 
 deck_list = [deck1, deck2, instruction]
 

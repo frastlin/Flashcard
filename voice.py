@@ -93,6 +93,14 @@ class Voice:
 			return s[0]
 		return list(s)
 
+	def make_voice(self, language=None, gender=None, name=None):
+		"""Will make the current_voice out of the current settings or the passed arguments"""
+		if not language:language = self.language
+		if not gender:gender = self.gender
+		if not name:name = self.name
+		language = voice_lists.languages2.get(language)
+		self.current_voice = {"Language": language, "Gender": gender, "Name": name}
+
 	def menu_run(self, actions, name, options, title, choice=None):
 		"""Will run a menu with the name of name"""
 		if self.menu_list.get(name) and name != "name_menu":
@@ -108,11 +116,12 @@ class Voice:
 
 	def list_voices(self):
 		"""Will return a dict of voices from either the internet or the saved list"""
-		try:
-			res = self.client.list_voices(method=METHOD_POST)
-			return res.json['Voices']
-		except:
-			return voice_lists.voice_dict['Voices']
+#		try:
+#			res = self.client.list_voices(method=METHOD_POST)
+#			return res.json['Voices']
+#		except:
+#*Note* the internet listing takes way too long to do, so I'm just going to update it manualy. But to add this back in, just tab it and unquote everything above.
+		return voice_lists.voice_dict['Voices']
 
 	def speak(self, text="Hello World", current_voice=None, path="tmp"):
 		"""pass in text if you wish it spoken and a dict that you wished passed as well as the path within the voice_files folder you wish the files to be"""

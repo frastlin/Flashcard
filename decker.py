@@ -1,7 +1,8 @@
 #This module has all the functions dealing with the management of decks
-import menus, filer
+import menus, filer, scripter
 
 deck_list = filer.run()
+deck_list += scripter.run()
 
 if not deck_list:
 	import my_cards
