@@ -111,12 +111,8 @@ class Deck(object):
 		settings = {}
 		if self.current_side == 'back':
 			side = self.current_card[self.sides[1]]
-#			settings = self.set_settings(side, self.default_back)
-#			[settings.update({s: self.default_front}) for s in self.default_front if s not in settings]
 			[settings.update({i: self.default_back[i]}) for i in self.default_back]
 			[settings.update({i: side.settings[i]}) for i in side.settings]
-
-
 			self.current_side = 'front'
 			#These 3 lines are to remove the repeat cards. I wasn't sure where to put it, so just put it here because it is with the back check.
 			if settings.get('cards_repeat') == False:
@@ -125,7 +121,7 @@ class Deck(object):
 			self.deck_check(settings)
 		else: #elif self.current_side == 'front':
 			if not self.current_card:
-				self.current_card = random.choice(self.card_list)
+#				self.current_card = random.choice(self.card_list)
 			side = self.current_card[self.sides[0]]
 #			settings = self.set_settings(side, self.default_front)
 #			[settings.update({s: self.default_front}) for s in self.default_front if s not in settings]

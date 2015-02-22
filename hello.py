@@ -1,2 +1,0 @@
-print("questo è bene")
-
