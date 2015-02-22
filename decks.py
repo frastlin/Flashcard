@@ -121,7 +121,8 @@ class Deck(object):
 			self.deck_check(settings)
 		else: #elif self.current_side == 'front':
 			if not self.current_card:
-#				self.current_card = random.choice(self.card_list)
+				self.current_card = self.random_check(settings, self.card_list)
+
 			side = self.current_card[self.sides[0]]
 #			settings = self.set_settings(side, self.default_front)
 #			[settings.update({s: self.default_front}) for s in self.default_front if s not in settings]
