@@ -53,6 +53,7 @@ class Deck(object):
 			display.change_background((0, 0, 0))
 			return "choose_deck"
 		elif key in ("return", "space") or mouseClicked or self.current_side == None:
+			self.stop_media()
 			text = self.run_side()
 			self.text = text
 			if not self.voice:
@@ -74,13 +75,20 @@ class Deck(object):
 			elif self.voice:
 				mixer.music.stop()
 				mixer.music.play()
-
 			else:
 				spk(self.text)
-
+		elif key in ["left ctrl", "right ctrl"]:
+			self.stop_media()
 
 
 		return "cards"
+
+	def stop_media(self):
+		"""Will stop either a voice or a media file"""
+		if self.media:
+			self.media.stop()
+		elif self.voice:
+			mixer.music.stop()
 
 	def run_side(self):
 		"""This will run a card, just repeat it for the whole deck"""
@@ -135,10 +143,9 @@ class Deck(object):
 
 	def random_check(self, settings, l):
 		"""This function returns the card, it checks if the card is random or not. if it is random, it calls a function to check if there are consecutive cards. if not, it changes temp_card_list to a number and adds a number each time till it reaches len(l)-1 and resets."""
-		if settings['random']:
+		if not settings['random']:
 			self.consec_cards(settings['different_consecutive_cards'], l)
-			random.shuffle(l)
-			return l[0]
+			return random.choice(l)
 		else:
 			#This section changes the temp_card_list to a number and uses it instead of creating a new fresh variable. Then every iteration it adds +1 to the variable before resetting it when it reaches the max.
 			templ = self.temp_card_list

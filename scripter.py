@@ -38,6 +38,16 @@ def render_formatting(text):
 		text = "\t".join(t)
 	return text
 
+def valid_characters(text):
+	"""Will remove any invalid characters for windows naming skeems and replace : with -"""
+	valid_characters = "<>:\"/\\|?*"
+	for i in valid_characters:
+		if i == ":":
+			text = text.replace(i, "-")
+		else:
+			text = text.replace(i, "")
+	return text
+
 def translate(file):
 	"""will translate the script into python code"""
 	current_function = None
@@ -80,6 +90,7 @@ class Card(object):
 
 def title(text):
 	"""Calls the manage_decks which creates a new deck with the title of the passed text. It then returns 'text'"""
+	text = valid_characters(text)
 	manage_decks(text)
 	return "text"
 
@@ -183,4 +194,11 @@ def txt(*args):
 #import time
 #time.sleep(3)
 
-f = "<>:\"/\\|?*"
+"""
+fix random generator
+fix letter reading
+add the ability to reverse cards
+Make a counter that can be reset that says how many cards have been done sense the last reset or sense the deck has began
+Make it so you can use both right and left controll when arrowing through the cards
+
+"""

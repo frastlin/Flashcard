@@ -3,7 +3,9 @@ import pygame, random, sys
 from pygame.locals import *
 from speech import speak as spk
 #our program spacific modules:
-import display, start, decker, create_decks
+import display, start, decker, create_decks, logger
+
+logger.start("Starting flashcard")
 
 fps = 30
 windowwidth = 640

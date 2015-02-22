@@ -14,7 +14,8 @@ class Side(object):
 		self.settings = settings
 
 		if settings.get('voice'):
-			self.settings['voice'] = Voice(self.settings['voice'])
+			if isinstance(settings['voice'], dict):
+				self.settings.update({'voice': Voice(current_voice=self.settings['voice'])})
 
 
 		#Operation variables

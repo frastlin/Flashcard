@@ -1,6 +1,8 @@
 #coding: utf-8
 #Module for dealing with Ivona voices and the speech.
-import os, voice_lists, menus, pygame
+import os
+import voice_lists, menus, pygame
+from logger import log
 from ivonaspeechcloud.client import SpeechCloudClient
 from ivonaspeechcloud.const import METHOD_POST
 from ivonaspeechcloud.inputs import Voice as vw
@@ -100,6 +102,7 @@ class Voice:
 		if not name:name = self.name
 		language = voice_lists.languages2.get(language)
 		self.current_voice = {"Language": language, "Gender": gender, "Name": name}
+		return self.current_voice
 
 	def menu_run(self, actions, name, options, title, choice=None):
 		"""Will run a menu with the name of name"""
@@ -123,6 +126,16 @@ class Voice:
 #*Note* the internet listing takes way too long to do, so I'm just going to update it manualy. But to add this back in, just tab it and unquote everything above.
 		return voice_lists.voice_dict['Voices']
 
+	def valid_characters(self, text):
+		"""Will remove any invalid characters for windows naming skeems and replace : with -"""
+		valid_characters = "<>:\"/\\|?*"
+		for i in valid_characters:
+			if i == ":":
+				text = text.replace(i, "-")
+			else:
+				text = text.replace(i, "")
+		return text
+
 	def speak(self, text="Hello World", current_voice=None, path="tmp"):
 		"""pass in text if you wish it spoken and a dict that you wished passed as well as the path within the voice_files folder you wish the files to be"""
 		self.run_check(path)
@@ -131,17 +144,18 @@ class Voice:
 		if text.strip():
 			try:
 				res = self.client.create_speech(text, output_format=OutputFormat(codec="OGG"), voice=vw(language=current_voice.get('language'), gender=current_voice.get('Gender'), name=current_voice.get('Name')), method=METHOD_POST)
-				path = "voice_files/%s/%s_%s_%s_%s.ogg" % (path, current_voice.get('Language'), current_voice.get('Gender'), current_voice.get('Name'), text[0:100])
+				path = "voice_files/%s/%s_%s_%s_%s.ogg" % (path, current_voice.get('Language'), current_voice.get('Gender'), current_voice.get('Name'), self.valid_characters(text[0:100]))
 				try:
 					music.load(path)
-				except:
+				except Exception, e:
+					log("Exception error from the inner try in voice.py:\n%s" % e)
 					with open(path, "wb") as f:
 						[f.write(chunk) for chunk in res.chunks]
 					music.load(path)
 				music.play()
 				return path
-			except:
-				print("You are not connected to the internet")
+			except Exception, e:
+				log("From the outer voice try in voice.py:\n%s" % e)
 				return ""
 	def run_check(self, path):
 		"""Checks that pygame is initialised and that the path is there"""
@@ -156,10 +170,10 @@ class Voice:
 
 if __name__ == '__main__':
 	v = Voice()
-#	print(v.voice_list)
+#	log(v.voice_list)
 	v.language = 'American English'
 	v.gender = 'Male'
-#	print(v.list_type("name"))
+#	log(v.list_type("name"))
 	v.speak()
 	import time
 	time.sleep(2)
