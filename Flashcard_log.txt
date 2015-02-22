@@ -1,0 +1,75 @@
+Started at:
+Saturday February 21 at 11:11PM
+Started at:
+Sunday February 22 at 10:32AM
+Starting flashcard
+From the outer voice try in voice.py:
+valid_characters() takes exactly 1 argument (2 given)
+From the outer voice try in voice.py:
+valid_characters() takes exactly 1 argument (2 given)
+Started at:
+Sunday February 22 at 10:33AM
+Starting flashcard
+Exception error from the inner try in voice.py:
+Couldn't read from 'voice_files/My scripted deck 1-It is cool/None_None_None_That was good wasn't it.ogg'
+Started at:
+Sunday February 22 at 10:36AM
+Starting flashcard
+Exception error from the inner try in voice.py:
+Couldn't read from 'voice_files/My scripted deck 1-It is cool/None_None_None_Here is some text spoken by a voice.ogg'
+Exception error from the inner try in voice.py:
+Couldn't read from 'voice_files/My scripted deck 1-It is cool/None_None_None_That was good wasn't it.ogg'
+Started at:
+Sunday February 22 at 10:39AM
+Starting flashcard
+Started at:
+Sunday February 22 at 10:40AM
+Starting flashcard
+Started at:
+Sunday February 22 at 10:41AM
+Starting flashcard
+Started at:
+Sunday February 22 at 11:21AM
+Starting flashcard
+Started at:
+Sunday February 22 at 11:22AM
+Starting flashcard
+Started at:
+Sunday February 22 at 11:25AM
+Starting flashcard
+Started at:
+Sunday February 22 at 11:29AM
+Starting flashcard
+Started at:
+Sunday February 22 at 11:35AM
+Starting flashcard
+Started at:
+Sunday February 22 at 11:44AM
+Starting flashcard
+Started at:
+Sunday February 22 at 11:45AM
+Starting flashcard
+Started at:
+Sunday February 22 at 11:59AM
+Starting flashcard
+Started at:
+Sunday February 22 at 12:01PM
+Starting flashcard
+Started at:
+Sunday February 22 at 12:01PM
+Starting flashcard
+Started at:
+Sunday February 22 at 12:03PM
+Starting flashcard
+Exception error from the inner try in voice.py:
+Couldn't read from 'voice_files/My scripted deck 1-It is cool/en-US_None_Salli_Here is some text spoken by a voice.ogg'
+Exception error from the inner try in voice.py:
+Couldn't read from 'voice_files/My scripted deck 1-It is cool/it-IT_None_Giorgio_That was good wasn't it.ogg'
+Started at:
+Sunday February 22 at 12:05PM
+Starting flashcard
+Started at:
+Sunday February 22 at 12:06PM
+Starting flashcard
+Exception error from the inner try in voice.py:
+Couldn't read from 'voice_files/My scripted deck 1-It is cool/None_None_Emma_That was good wasn't it.ogg'
