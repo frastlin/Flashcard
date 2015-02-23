@@ -7,16 +7,16 @@ microwave
 microonde
 
 frozen
-surgilato
+surgelato
 
-expresso maschine
+expresso machine
 caffetteria
 
-coffi maschine
-macchina per  caffe
+coffee machine
+macchina per caffe
 
-nife block
-porta coltello  
+knife block
+porta coltelli  
 
 arm
 il braccio  

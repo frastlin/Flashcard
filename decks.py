@@ -1,5 +1,5 @@
 #This is our basic setup for decks
-import random, cards, display
+import random, itertools, cards, display
 from speech import speak as spk
 from text import text_wrap as txt
 from pygame import mixer
@@ -27,7 +27,7 @@ class Deck(object):
 		#Here are our default sides
 		self.title = title
 		self.default_front = {'voice': None, 'font': {'size': 40, 'font_color': 'white', 'font': 'freesansbold.ttf', 'font_background': 'black'}, 'font_location': {'xpos': 350, 'ypos': 100, 'center': True}, 'background': 'black'}
-		self.default_back = {'voice': None, 'font': {'size': 40, 'font_color': 'white', 'font': 'freesansbold.ttf', 'font_background': 'black'}, 'font_location': {'xpos': 350, 'ypos': 100, 'center': True}, 'background': (0, 0, 0), 'cards_repeat': True, 'different_consecutive_cards': 1, 'random': False}
+		self.default_back = {'voice': None, 'font': {'size': 40, 'font_color': 'white', 'font': 'freesansbold.ttf', 'font_background': 'black'}, 'font_location': {'xpos': 350, 'ypos': 100, 'center': True}, 'background': (0, 0, 0), 'cards_repeat': True, 'different_consecutive_cards': 1, 'random': True}
 
 		#Our operation variables
 		self.card_list = []
@@ -37,11 +37,10 @@ class Deck(object):
 		self.current_card = None
 		self.run_cards = []
 		self.text = None
+		self.text_class = spk("I like pie", False)
 		self.media = None
 		self.voice = None
 		self.sides = (0, 1)
-		self.current_character = 0
-		self.current_word = 0
 
 	def run(self, actions):
 		"""Will check for keyboard input and run the side_run function"""
@@ -57,18 +56,9 @@ class Deck(object):
 			text = self.run_side()
 			self.text = text
 			if not self.voice:
-				spk(text)
-		elif key in ('up', 'down') and self.text:
-			spk(self.text)
-		elif key in ['left', 'right'] and not mods:
-			text = self.text
-			self.current_character = self.scroll(key, self.current_character, text)
-			spk(text[self.current_character])
-		elif key in ['left', 'right'] and mods:
-			text = self.text.split(' ')
-			self.current_word = self.scroll(key, self.current_word, text)
-			self.current_character = self.text.index(text[self.current_word])
-			spk(text[self.current_word])
+				self.text_class = spk(text)
+		elif key in ['left', 'right', 'home', 'end', 'up', 'down']:
+			self.text_class.move(actions)
 		elif key in ['r', 'p']:
 			if self.media:
 				self.media.play()
@@ -76,10 +66,9 @@ class Deck(object):
 				mixer.music.stop()
 				mixer.music.play()
 			else:
-				spk(self.text)
+				self.text_class = spk(self.text)
 		elif key in ["left ctrl", "right ctrl"]:
 			self.stop_media()
-
 
 		return "cards"
 
@@ -115,55 +104,38 @@ class Deck(object):
 			[settings.update({i: side.settings[i]}) for i in side.settings]
 			self.current_side = 'front'
 			#These 3 lines are to remove the repeat cards. I wasn't sure where to put it, so just put it here because it is with the back check.
-			if settings.get('cards_repeat') == False:
+			if not settings.get('cards_repeat'):
 				self.run_cards.append(self.current_card)
 				self.card_list.remove(self.current_card)
-			self.deck_check(settings)
 		else: #elif self.current_side == 'front':
-			if not self.current_card:
-				self.current_card = self.random_check(settings, self.card_list)
+			self.current_card = self.random_check()
 
 			side = self.current_card[self.sides[0]]
-#			settings = self.set_settings(side, self.default_front)
-#			[settings.update({s: self.default_front}) for s in self.default_front if s not in settings]
 			[settings.update({i: self.default_front[i]}) for i in self.default_front]
 			[settings.update({i: side.settings[i]}) for i in side.settings]
-
 			self.current_side = 'back'
 		return (side, settings)
 
-	def deck_check(self, settings):
-		"""This function returns a random card."""
-		l = self.card_list
-		card = self.random_check(settings, l)
-		self.current_card = card
-
-	def random_check(self, settings, l):
+	def random_check(self):
 		"""This function returns the card, it checks if the card is random or not. if it is random, it calls a function to check if there are consecutive cards. if not, it changes temp_card_list to a number and adds a number each time till it reaches len(l)-1 and resets."""
-		if not settings['random']:
-			self.consec_cards(settings['different_consecutive_cards'], l)
-			return random.choice(l)
+		if self.default_back['random']:
+			self.consec_cards()
+			return random.choice(self.card_list)
 		else:
-			#This section changes the temp_card_list to a number and uses it instead of creating a new fresh variable. Then every iteration it adds +1 to the variable before resetting it when it reaches the max.
-			templ = self.temp_card_list
-			if templ == []:
-				templ = 0
-			elif templ == len(l) - 1:
-				templ = -1
-			templ += 1
-			self.temp_card_list = templ
-			return l[templ]
+			#This section creates an iterator that cycles in a loop. when we call next on it it will return the next card in the sequence
+			if not self.temp_card_list:
+				self.temp_card_list = itertools.cycle(self.card_list)
+			return next(self.temp_card_list)
 
-	def consec_cards(self, consec, l):
+	def consec_cards(self):
 		"""Appends already run cards to a temp card list and removes cards if the temp list gets too long"""
-		if consec and consec < len(l) or self.temp_card_list:
-			card = self.current_card
-			templ = self.temp_card_list
-			l.remove(card)
-			templ.append(card)
+		consec = self.default_back['different_consecutive_cards']  
+		if self.current_card and consec and consec < len(self.card_list):
+			self.card_list.remove(self.current_card)
+			self.temp_card_list.append(self.current_card)
 			#This if statement checks the templ to see if it is longer than the consecutive number. if so, it adds the last item back into the card_list
-			if len(templ) > consec:
-				l.append(templ.pop(0))
+			if len(self.temp_card_list) > consec:
+				self.card_list.append(self.temp_card_list.pop(0))
 
 	def set_settings(self, side, side_default):
 		"""Checks the card to see if there are any local settings and if there are, uses them rather than the ones in default while using default for all settings that are not changed in local settings. The list comprehension at the bottom will add a dict entry from the default settings to the temp_settings if k is not already there."""
