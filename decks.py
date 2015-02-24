@@ -41,6 +41,7 @@ class Deck(object):
 		self.media = None
 		self.voice = None
 		self.sides = (0, 1)
+		self.card_count = 0
 
 	def run(self, actions):
 		"""Will check for keyboard input and run the side_run function"""
@@ -69,7 +70,12 @@ class Deck(object):
 				self.text_class = spk(self.text)
 		elif key in ["left ctrl", "right ctrl"]:
 			self.stop_media()
-
+		elif key == "z":
+			if not "shift" in mods:
+				spk("You have done %s cards" % self.card_count)
+			elif "shift" in mods:
+				spk("Reset the card count")
+				self.card_count = 0
 		return "cards"
 
 	def stop_media(self):
@@ -103,6 +109,7 @@ class Deck(object):
 			[settings.update({i: self.default_back[i]}) for i in self.default_back]
 			[settings.update({i: side.settings[i]}) for i in side.settings]
 			self.current_side = 'front'
+			self.card_count += 1
 			#These 3 lines are to remove the repeat cards. I wasn't sure where to put it, so just put it here because it is with the back check.
 			if not settings.get('cards_repeat'):
 				self.run_cards.append(self.current_card)

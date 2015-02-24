@@ -81,17 +81,24 @@ def main():
 		display.event_queue.tick(fpsClock.tick(fps))
 
 mod_id = {
-64: ['ctrl'],
-320: ['ctrl'],
-1: ['shift'],
-257: ['shift'],
-65: ['ctrl', 'shift'],
-256: ['alt'],
-257: ['alt', 'shift'],
-321: ['ctrl', 'alt', 'shift']
+64: ['left ctrl', 'ctrl'],
+320: ['left ctrl', 'ctrl'],
+1: ['left shift', 'shift'],
+257: ['left shift', 'shift'],
+256: ['left alt', 'alt'],
+2: ['right shift', 'shift'],
+128: ['right ctrl', 'ctrl'],
+65: ['left ctrl', 'ctrl', 'left shift', 'shift'],
+66: ['left ctrl', 'ctrl', 'right shift', 'shift'],
+257: ['left alt', 'alt', 'left shift', 'shift'],
+129: ['right ctrl', 'ctrl', 'left shift', 'shift'],
+130: ['right ctrl', 'ctrl', 'right shift', 'shift'],
+321: ['left ctrl', 'ctrl', 'left alt', 'alt', 'left shift', 'shift'],
+322: ['left ctrl', 'ctrl', 'left alt', 'alt', 'right shift', 'shift'],
+258: ['left alt', 'alt', 'right shift', 'shift'],
+384: ['left alt', 'alt', 'right ctrl', 'ctrl'],
+386: ['left alt', 'alt', 'right ctrl', 'ctrl', 'right shift', 'shift'],
 }
-
-
 
 if __name__ == '__main__':
 	main()

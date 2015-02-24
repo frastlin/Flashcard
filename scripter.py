@@ -195,9 +195,6 @@ def txt(*args):
 #time.sleep(3)
 
 """
-fix letter reading
 add the ability to reverse cards
-Make a counter that can be reset that says how many cards have been done sense the last reset or sense the deck has began
-Make it so you can use both right and left controll when arrowing through the cards
 
 """
