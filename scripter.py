@@ -56,7 +56,7 @@ def translate(file):
 		if ":" in l:
 			l = l.split(":", 1)
 			l_word = l[0].lower().strip()
-			if l_word in ['title', 'text', 'media', 'voice']:
+			if function_dict.get(l_word):
 				current_function = l_word
 				l = l[1]
 			else:
@@ -143,6 +143,20 @@ def voice(text):
 		current_card.front_voice = v
 	return "text"
 
+def deck_settings(text):
+	"""Will only set reverse, random, cards_repeat and repeating"""
+	text = text_into_dict(text)
+	if text.get("random"):
+		current_deck.default_back['random'] = text_to_bool(text['random'])
+	if text.get("cards_repeat"):
+		current_deck.default_back['cards_repeat'] = text_to_bool(text['cards_repeat'])
+	if text.get("reverse"):
+		if text_to_bool(text['reverse']):
+			current_deck.sides = (1, 0)
+	if text.get("repeating"):
+		current_deck.default_back['repeating'] = text_to_int(text['repeating'])
+	return "text"
+
 def text_into_dict(text):
 	"""Will take a string and take out the equals and trailing spaces from it and turn it into a dict with the key in all lowercase"""
 	text = text.split(",")
@@ -150,6 +164,20 @@ def text_into_dict(text):
 	text = [(i[0].lstrip().rstrip().lower(), i[1].lstrip().rstrip().title()) for i in text if len(i) == 2 and i[1]]
 	return dict(text)
 
+def text_to_bool(text):
+	"""Will change text to be a true or false value"""
+	text = text.strip().lower()
+	if text in ['n', 'no', 'false', 'f', 'nine', 'nope']:
+		return False
+	else:
+		return True
+
+def text_into_int(text, default=1):
+	"""Makes text into a number"""
+	try:
+		return int(text.strip())
+	except:
+		return default
 
 
 function_dict = {
@@ -157,6 +185,9 @@ function_dict = {
 'text': TEXT,
 'media': media,
 'voice': voice,
+'deck settings': deck_settings,
+'deck_settings': deck_settings,
+
 }
 
 
@@ -186,15 +217,10 @@ def txt(*args):
 			print(c[1].text)
 """
 
-#v = voice("name=emma")
-#
-#print(v.current_voice)
-#
-#v.speak("I am an Ivona text to speech voice")
-#import time
-#time.sleep(3)
-
 """
 add the ability to reverse cards
+
+deck_settings:random=True, different_consecutive_cards=True
+front_settings:background=blue, font:size=32
 
 """

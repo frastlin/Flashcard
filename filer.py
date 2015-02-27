@@ -2,29 +2,32 @@
 import os
 from importlib import import_module
 import file_contents
-"""
-try:
-	import cPickle as pickle
-except:
-	import pickle
-"""
 
 def run():
 	"""Run this function to get the creation and or import of all decks from 'decks_in_python'. Note that folder names should have a / after them."""
 	d1 = "my_decks/"
 	d2 = "decks_in_python/"
 	d3 = "voice_files/tmp/"
+	d4 = "sounds/"
 	if not os.path.exists(d1):
 		os.makedirs(d1)
 	if not os.path.exists(d2):
 		os.makedirs(d2)
 	if not os.path.exists(d3):
 		os.makedirs(d3)
+	if not os.path.exists(d4):
+		os.makedirs(d4)
+
+	file_list = os.listdir(d1)
+	if not file_list:
+		file_maker(d1, 'My Decks.txt', file_contents.example_deck)
+		file_maker(d1, 'How to Make Decks.html', file_contents.readme_script)
+
+
 	file_list = os.listdir(d2)
 	if not file_list:
-		file_maker(d2, 'my_cards.py', file_contents.my_cards)
+		file_maker(d2, 'my_cards.txt', file_contents.my_cards)
 		file_maker(d2, 'readme.html', file_contents.readme_python)
-#		init_creator([d2])
 		file_list = os.listdir(d2)
 	return file_importer(file_list, d2)
 

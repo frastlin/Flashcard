@@ -15,7 +15,7 @@ windowheight = 480
 def main():
 	pygame.init()
 	fpsClock = pygame.time.Clock()
-	displaySurface = pygame.display.set_mode((windowwidth, windowheight)) #, pygame.FULLSCREEN)
+	displaySurface = pygame.display.set_mode((windowwidth, windowheight), pygame.FULLSCREEN)
 	pygame.display.set_caption('Flashcards')
 	play = True
 	current_screen = "start"

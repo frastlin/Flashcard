@@ -21,13 +21,15 @@ class Deck(object):
 			background: color or picture of the background for the front
 			cards_repeat: will a card be put back into the deck after being played or removed? True for put back in and False for removed.
 			default_options_front: if you wish to have options like 'yes' and 'no' you can set them here.
-			different_consecutive_cards: If cards are repeating, this will wait the number of cards before repeating the first card. *Note, if it is higher than the number of cards in the list, it will revert to 0.
+			repeating: If cards are repeating, this will wait the number of cards before repeating the first card. *Note, if it is higher than the number of cards in the list, it will revert to 0.
 			random: If you wish just to go through your cards in a row, put this as False, otherwise have a random choice.
 		"""
 		#Here are our default sides
 		self.title = title
 		self.default_front = {'voice': None, 'font': {'size': 40, 'font_color': 'white', 'font': 'freesansbold.ttf', 'font_background': 'black'}, 'font_location': {'xpos': 350, 'ypos': 100, 'center': True}, 'background': 'black'}
-		self.default_back = {'voice': None, 'font': {'size': 40, 'font_color': 'white', 'font': 'freesansbold.ttf', 'font_background': 'black'}, 'font_location': {'xpos': 350, 'ypos': 100, 'center': True}, 'background': (0, 0, 0), 'cards_repeat': True, 'different_consecutive_cards': 1, 'random': True}
+		self.default_back = {'voice': None, 'font': {'size': 40, 'font_color': 'white', 'font': 'freesansbold.ttf', 'font_background': 'black'}, 'font_location': {'xpos': 350, 'ypos': 100, 'center': True}, 'background': (0, 0, 0), 'cards_repeat': True, 'repeating': 1, 'random': True}
+		#*note*, here is what the scripting deck_settings is, it is really a refference to the default_back.
+		#'cards_repeat': True, 'repeating': 1, 'random': True
 
 		#Our operation variables
 		self.card_list = []
@@ -136,7 +138,7 @@ class Deck(object):
 
 	def consec_cards(self):
 		"""Appends already run cards to a temp card list and removes cards if the temp list gets too long"""
-		consec = self.default_back['different_consecutive_cards']  
+		consec = self.default_back['repeating']  
 		if self.current_card and consec and consec < len(self.card_list):
 			self.card_list.remove(self.current_card)
 			self.temp_card_list.append(self.current_card)

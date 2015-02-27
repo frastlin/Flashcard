@@ -196,3 +196,95 @@ Starting flashcard
 Started at:
 Tuesday February 24 at 11:34PM
 Starting flashcard
+Started at:
+Thursday February 26 at 07:30PM
+Starting flashcard
+Started at:
+Thursday February 26 at 08:42PM
+Starting flashcard
+Exception error from the inner try in voice.py:
+Couldn't read from 'voice_files/utensili/en-US_None_Salli_Piattino.ogg'
+Exception error from the inner try in voice.py:
+Couldn't read from 'voice_files/utensili/en-US_None_Salli_brocca.ogg'
+Started at:
+Thursday February 26 at 08:47PM
+Starting flashcard
+Started at:
+Thursday February 26 at 08:48PM
+Starting flashcard
+Started at:
+Thursday February 26 at 09:00PM
+Starting flashcard
+Started at:
+Thursday February 26 at 09:01PM
+Starting flashcard
+Started at:
+Thursday February 26 at 09:01PM
+Starting flashcard
+Started at:
+Thursday February 26 at 09:16PM
+Starting flashcard
+Started at:
+Thursday February 26 at 09:17PM
+Starting flashcard
+Started at:
+Thursday February 26 at 09:20PM
+Starting flashcard
+Started at:
+Thursday February 26 at 09:21PM
+Starting flashcard
+Started at:
+Thursday February 26 at 09:21PM
+Starting flashcard
+Started at:
+Thursday February 26 at 09:22PM
+Starting flashcard
+Started at:
+Thursday February 26 at 09:23PM
+Starting flashcard
+Started at:
+Thursday February 26 at 09:24PM
+Starting flashcard
+Started at:
+Friday February 27 at 11:41AM
+Starting flashcard
+Started at:
+Friday February 27 at 11:43AM
+Starting flashcard
+Started at:
+Friday February 27 at 11:44AM
+Starting flashcard
+Started at:
+Friday February 27 at 11:54AM
+Starting flashcard
+Started at:
+Friday February 27 at 12:04PM
+Starting flashcard
+Started at:
+Friday February 27 at 12:04PM
+Starting flashcard
+Started at:
+Friday February 27 at 12:05PM
+Starting flashcard
+Started at:
+Friday February 27 at 12:07PM
+Starting flashcard
+Exception error from the inner try in voice.py:
+Couldn't read from 'voice_files/Attension! Click me!/None_None_Emma_You look a tad bit pail..ogg'
+Started at:
+Friday February 27 at 12:08PM
+Starting flashcard
+Started at:
+Friday February 27 at 12:08PM
+Starting flashcard
+Exception error from the inner try in voice.py:
+Couldn't read from 'voice_files/Attension! Click me!/None_None_Emma_You look a tad bit pail!.ogg'
+Started at:
+Friday February 27 at 12:10PM
+Starting flashcard
+Started at:
+Friday February 27 at 12:12PM
+Starting flashcard
+Started at:
+Friday February 27 at 12:15PM
+Starting flashcard
