@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>How to Make Decks</title>
+</head>
+<body>
+<p><a href="#easy">Easy deck creation</a>
+<a href="#cool">Adding Cool Stuff</a>
+<a href="#tags">Tags</a>
+<a href="#help">Help Me</a></p>
+
+<h1>discription</h1>
+
+<p>Flashcard is meant to be the most simple way to make and use flash cards. <br />
+To get going, all you need to do is make a file with a <em>text file (.txt extension)</em> in this folder and for the first line, make a title. for all the other lines, write the front and on the next line write the back. For example:  </p>
+
+<h2><a name="easy">easy flash card creation</a></h2>
+
+<pre><code>My First Deck
+
+Why did the chicken cross the road?
+Cause it wanted to get to the other side!
+What did the big bucket say to the little bucket?
+You look a little pail!
+Why did the poney sound strange?
+Because it was a little horse!
+</code></pre>
+
+<h1><a name="cool">Adding Cool Stuff</a></h1>
+
+<p>Flashcard has the ability to add media like sound files. In order to do this you need to insert something called <em>tags</em>. Tags are in the format: <br />
+tag:command <br />
+<em>Warning</em> You must put the colen (<em>:</em>) after the tag and then put the command after it. Another tag is the voice tag. You can make a voice by adding a command to the command like: <br />
+voice:language=French, gender=female  </p>
+
+<h2>Tagged Deck</h2>
+
+<pre><code>title:My second deck  
+
+What did the skeleton say when he got on the motorcycle?
+I was bone to be wild!
+media:sounds/bone.ogg
+What's your name?
+Mine's Sally!
+voice:name=sally
+</code></pre>
+
+<h2><a name="tags">Tags</a></h2>
+
+<ul>
+<li>media, add media</li>
+<li>voice add a voice from IVONA  Text to Speach</li>
+<li>title used to start a new deck, used if you wish to add more than one deck in a document</li>
+<li>text Not needed, but makes the decks a little more clear, it will just say that you are making text for the  cards</li>
+<li>deck settings has reverse, random, <code>cards_repeat</code> and repeating and is used for the global settings. More later</li>
+</ul>
+
+<h2>voice</h2>
+
+<p>To add voices you need to choose at leaste one item from the following: <br />
+name, gender, language  </p>
+
+<h3>name</h3>
+
+<p>The name argument is very spacific and will make sure you get the correct name. But sometimes there are two voices with the same name. Here is the list of names: <br />
+Salli Joey Naja Mads Marlene Hans Nicole Russell Amy Brian Emma Gwyneth Geraint Gwyneth Geraint Raveena Chipmunk Eric Ivy Jennifer Justin Kendra Kimberly Conchita Enrique Penelope Miguel Chantal Celine Mathieu Dora Karl Carla Giorgio Liv Lotte Ruben Agnieszka Jacek Ewa Jan Maja Vitoria Ricardo Cristiano Carmen Tatyana Astrid Filiz <br />
+There are 49 names and Gwyneth is the only one where it is in both Welsh English and Welsh.</p>
+
+<h3>gender</h3>
+
+<p>This is simple, but often helps you narrow down a voice. You have <br />
+male <br />
+female <br />
+and if you know what language, but not what the name is, you can just do something like: <br />
+language=Italian, gender=female  </p>
+
+<h3>language</h3>
+
+<p>Here is a list of languages. If you just would like American English, you only need to write english and it will default to english:  </p>
+
+<ul>
+<li>Swedish</li>
+<li>Icelandic</li>
+<li>Turkish</li>
+<li>Romanian</li>
+<li>Dutch</li>
+<li>Norwegian</li>
+<li>Danish</li>
+<li>European Portuguese</li>
+<li>Welsh</li>
+<li>French</li>
+<li>Brazilian Portuguese</li>
+<li>Russian</li>
+<li>American Spanish</li>
+<li>British English</li>
+<li>Canadian French</li>
+<li>Welsh English</li>
+<li>American English</li>
+<li>Italian</li>
+<li>German</li>
+<li>Indian English</li>
+<li>Australian English</li>
+<li>Polish</li>
+<li>Castilian Spanish</li>
+</ul>
+
+<h2>deck settings</h2>
+
+<p>If you would like some controll over what your deck does when it runs, you can place the line <br />
+<code>deck_settings:</code> <br />
+right after the title. You then put the commands after it like: <br />
+<code>deck_settings:random=no</code> <br />
+will turn off random. <br />
+Here are the commands:  </p>
+
+<h3>reverse</h3>
+
+<p>will make it so that the back of the card will be first and then it will flip to the front. <br />
+Type yes or no</p>
+
+<h3>random</h3>
+
+<p>By default this is yes, but you can make it no so that your cards will show up in the order you made them. <br />
+Type yes or no</p>
+
+<h3><code>cards_repeat</code></h3>
+
+<p>If you only wish for a card to show up once, make this no. <br />
+Type yes or no</p>
+
+<h3>repeating</h3>
+
+<p>This makes it so that a card will not show up twice in a row. It makes a holding area for the size you specify here. By default it is 1. <br />
+Type a number that is smaller than the number of cards you have.  </p>
+
+<h1><a name="help">Help Me!</a></h1>
+
+<p>Here are some common problems  </p>
+
+<h2>My voice is freazing or not playing</h2>
+
+<p>This means that your internet connection is slow or not there. When you run a deck the voice files will be stored on your computer for off-line playing, so run your deck first online, then you can run it offline.</p>
+
+<h2>After I made my deck, the program crashed!</h2>
+
+<p>Make sure you don't have any special characters like &ldquo; &rdquo; make them " or '. If you still can't get it to work, try to write your decks in notepad.</p>
+
+<h2>I don't see my problem here!</h2>
+
+<p>If you don't see your problem here,
+<a href="mailto:brandonkeithbiggs@gmail.com?subject=Help me with Flashcard PLEAAAAAAAAAAAASE!!!">Send me an email</a></p>
+</body>
+</html>

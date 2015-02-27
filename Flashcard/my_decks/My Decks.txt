@@ -1,0 +1,20 @@
+Attension! Click me!
+deck settings:random=no
+
+Hit enter
+To change sides and cards!
+
+What did the skeleton say when he got on the motorcycle?
+I was bone to be wild!
+media:sounds/bone.ogg
+
+Make a text (.txt file) in the My Decks folder
+to make your own decks!
+
+What did the big bucket say to the little bucket?
+You look a tad bit pail!
+voice:name=emma
+
+Press escape
+To get out of the deck and program!
+

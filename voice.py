@@ -136,7 +136,31 @@ class Voice:
 				text = text.replace(i, "")
 		return text
 
+
 	def speak(self, text="Hello World", current_voice=None, path="tmp"):
+		"""pass in text if you wish it spoken and a dict that you wished passed as well as the path within the voice_files folder you wish the files to be"""
+		self.run_check(path)
+		if not current_voice:
+			current_voice = self.current_voice
+		if text.strip():
+			try:
+				res = self.client.create_speech(text, output_format=OutputFormat(codec="OGG"), voice=vw(language=current_voice.get('language'), gender=current_voice.get('Gender'), name=current_voice.get('Name')), method=METHOD_POST)
+				path = "voice_files/%s/%s_%s_%s_%s.ogg" % (path, current_voice.get('Language'), current_voice.get('Gender'), current_voice.get('Name'), self.valid_characters(text[0:100]))
+				try:
+					music.load(path)
+				except Exception, e:
+					log("Exception error from the inner try in voice.py:\n%s" % e, level=1)
+					with open(path, "wb") as f:
+						[f.write(chunk) for chunk in res.chunks]
+					music.load(path)
+				music.play()
+				return path
+			except Exception, e:
+				log("From the outer voice try in voice.py:\n%s" % e, level=1)
+				return ""
+
+
+	def speaker(self, text="Hello World", current_voice=None, path="tmp"):
 		"""pass in text if you wish it spoken and a dict that you wished passed as well as the path within the voice_files folder you wish the files to be"""
 		self.run_check(path)
 		if not current_voice:
@@ -157,6 +181,8 @@ class Voice:
 			except Exception, e:
 				log("From the outer voice try in voice.py:\n%s" % e)
 				return ""
+
+
 	def run_check(self, path):
 		"""Checks that pygame is initialised and that the path is there"""
 		path = "voice_files/%s/" % path

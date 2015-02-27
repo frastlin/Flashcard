@@ -52,13 +52,13 @@ class BuildExe(object):
 		self.script = "engine.py"
 		
 		#name of program
-		self.project_name = "Flashcards"
+		self.project_name = "Flashcard"
 
 		#Project URL:
 		self.project_url = "about_none"
 
 		#version of program:
-		self.project_version = "0.01"
+		self.project_version = "1.0"
 
 		#License of the program:
 		self.license = "my app's license"
@@ -66,7 +66,7 @@ class BuildExe(object):
 		#Author of program:
 		self.author_name = "Brandon Keith Biggs"
 		self.author_email = "brandonkeithbiggs@gmail.com"
-		self.copyright = "Copyright (c) 2014 Brandon Keith Biggs"
+		self.copyright = "Copyright (c) 2015 Brandon Keith Biggs"
 
 		#description:
 		self.project_description = "An interactive flashcard engine"
@@ -91,7 +91,7 @@ class BuildExe(object):
 		self.zipfile_name = None
 
 		#dist directory:
-		self.dist_dir = 'dist'
+		self.dist_dir = 'dir'
 
 	def opj(self, *args):
 
@@ -190,7 +190,11 @@ if __name__ == '__main__':
 	build_1 = BuildExe()
 
 	import accessible_output
-	build_1.extra_datas = accessible_output.py2exe_datafiles()
+	datas = accessible_output.py2exe_datafiles()
+	datas.append(('sounds', ['sounds/bone.ogg']))
+	datas.append('freesansbold.ttf')
+	build_1.extra_datas = datas
+	build_1.dist_dir = 'Flashcard/'
 	build_1.run()
 
 	raw_input("Press any key to continue > ")
