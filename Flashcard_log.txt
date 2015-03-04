@@ -97,3 +97,6 @@ Traceback (most recent call last):
   File "C:\Users\brandon\programming\PythonFiles\applications\flashcard\voice.py", line 150, in speak
     music.load(path)
 error: Couldn't read from 'voice_files/My scripted deck 1-It is cool/None_None_Emma_That was good wasn't it.ogg'
+Started at:
+Wednesday March 04 at 02:24PM
+Starting flashcard

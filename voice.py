@@ -11,6 +11,9 @@ from credentials import access_key, secret_key
 import pygame
 music = pygame.mixer.music
 
+#Set the ssl authentication certifiket
+os.environ['REQUESTS_CA_BUNDLE'] = 'cacert.pem'
+
 class Voice:
 	"""Class for setting a voice and running it"""
 

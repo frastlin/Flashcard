@@ -193,6 +193,7 @@ if __name__ == '__main__':
 	datas = accessible_output.py2exe_datafiles()
 	datas.append(('sounds', ['sounds/bone.ogg']))
 	datas.append('freesansbold.ttf')
+	datas.append('cacert.pem')
 	build_1.extra_datas = datas
 	build_1.dist_dir = 'Flashcard/'
 	build_1.run()

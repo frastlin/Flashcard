@@ -2,15 +2,17 @@
 log_file = "Flashcard_log.txt"
 import sys, traceback
 
-#sys.stderr = open(log_file, 'a')
+#so the error log doesn't show up with py2exe
+sys.stderr = sys.stdout
+
+production = True
 
 def log(message, level=0):
 	"""Call this function in order to print to the log"""
-	if level == 0:
+	if level == 0 and not production:
 		log_write(message)
-	elif level == 1:
+	elif level == 1 and not production:
 		trace(message)
-
 
 def trace(message):
 	log_write("\nMessage:\n%s\nPython error:" % message)
