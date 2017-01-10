@@ -29,9 +29,9 @@ il piede
 elbow
 il gomito
 finger
-il dito  
+il dito
 fingers
-le dita    
+le dita
 knee
 il ginocchio
 knees

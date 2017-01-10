@@ -5,7 +5,7 @@
 from accessible_output import speech
 spk = speech.Speaker().output
 
-speechOn = True
+speechOn = False
 lexicon = {' ': 'space', '\n': 'carriage return'}
 
 def speak(text, sp=True):
