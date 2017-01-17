@@ -1,6 +1,7 @@
 #This is the engine for the flashcards
 import pygame, random, sys
 from pygame.locals import *
+import speech
 from speech import speak as spk
 #our program spacific modules:
 import display, start, decker, create_decks, logger
@@ -54,11 +55,12 @@ def main():
 				#The reason why we have sys.exit() here is because otherwise the display below throws an error because the video is not initalised
 				pygame.quit()
 				sys.exit()
-			elif actions['key'] == "s" and 'shift' in actions['mods'] and 'ctrl' in actions['mods']:
-				import speech
+			elif actions['key'] == "s" and 'ctrl' in actions['mods']:
 				if speech.speechOn:
+					speech.spk("Turnning off speech, press ctrl+s to turn it back on")
 					speech.speechOn = False
 				else:
+					speech.spk("Turnning on speech, press ctrl+s to turn it off")
 					speech.speechOn = True
 
 

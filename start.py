@@ -1,6 +1,10 @@
 #This is the screen that comes up when people first start the program
 import menus
+import speech
 from speech import speak as spk
+
+# speak the key command to toggle speech
+speech.spk("Press ctrl+s to toggle speech. Speech is off")
 
 main_menu = menus.Menu(options=["begin", "exit"], title="Main Menu", loops=False)
 settings = ['Speech:  on',]
